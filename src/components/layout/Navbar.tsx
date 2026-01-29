@@ -27,6 +27,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
+import { ModeToggle } from "./ModeToggle";
 
 interface MenuItem {
   title: string;
@@ -91,7 +92,7 @@ const Navbar = ({
     <section className={cn("py-4", className)}>
       <div className="container">
         {/* Desktop Menu */}
-        <nav className="hidden items-center justify-between lg:flex">
+        <nav className="items-center justify-between hidden lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
@@ -119,6 +120,8 @@ const Navbar = ({
             <Button asChild size="sm">
               <a href={auth.signup.url}>{auth.signup.title}</a>
             </Button>
+            {/* toggle for switching mode.. light to dark */}
+            <ModeToggle />
           </div>
         </nav>
 
@@ -155,7 +158,7 @@ const Navbar = ({
                   <Accordion
                     type="single"
                     collapsible
-                    className="flex w-full flex-col gap-4"
+                    className="flex flex-col w-full gap-4"
                   >
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
@@ -184,7 +187,7 @@ const renderMenuItem = (item: MenuItem) => {
       <NavigationMenuLink
         href={item.url}
         asChild // avoid wrapping with <a> again
-        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground"
+        className="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-medium transition-colors rounded-md group w-max bg-background hover:bg-muted hover:text-accent-foreground"
       >
         <Link href={item.url}>{item.title}</Link>
       </NavigationMenuLink>
@@ -194,7 +197,7 @@ const renderMenuItem = (item: MenuItem) => {
 
 const renderMobileMenuItem = (item: MenuItem) => {
   return (
-    <Link key={item.title} href={item.url} className="text-md font-semibold">
+    <Link key={item.title} href={item.url} className="font-semibold text-md">
       {item.title}
     </Link>
   );
