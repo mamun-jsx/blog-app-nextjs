@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/layout/app-sidebar"
+import { AppSidebar } from "@/components/layout/app-sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,15 +6,23 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children,
+  admin,
+  user,
+}: {
+  children: React.ReactNode;
+  admin: React.ReactNode;
+  user: React.ReactNode;
+}) {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -40,10 +48,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          {children}
+          {/* {children}
+           */}
+          {admin}
+          {user}
           <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }
