@@ -1,7 +1,6 @@
-import React from "react";
-
 const UserDefault = () => {
-  return <div>user default</div>;
+  return null;
+  //   to stop rendering the default page while we are using parallel routes and partial rendering
 };
 
 export default UserDefault;

@@ -1,11 +1,7 @@
-import React from 'react'
 
 const AdminDefault = () => {
-  return (
-    <div>
-      default
-    </div>
-  )
+  return null 
+    //   to stop rendering the default page while we are using parallel routes and partial rendering
 }
 
 export default AdminDefault;

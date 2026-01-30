@@ -14,8 +14,8 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
+const userInfo = { role: "admin" }; // Example user info, replace with actual data
 export default function DashboardLayout({
-  children,
   admin,
   user,
 }: {
@@ -25,7 +25,7 @@ export default function DashboardLayout({
 }) {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar user={userInfo} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
@@ -48,10 +48,8 @@ export default function DashboardLayout({
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          {/* {children}
-           */}
-          {admin}
-          {user}
+          {userInfo?.role === "admin" ? admin : user}
+
           <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
         </div>
       </SidebarInset>
